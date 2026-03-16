@@ -1,7 +1,19 @@
+import { exec } from 'node:child_process'
+import { promisify } from 'node:util'
 import { safeDelete, getDirSize } from './utils.js'
+import { TRASH_SENTINEL } from '../scanner/trash.js'
 import type { ScanResult, CleanProgress } from '../scanner/types.js'
 
+const execAsync = promisify(exec)
+
 export type CleanCallback = (progress: CleanProgress) => void
+
+async function emptyTrashViaOsascript(): Promise<void> {
+  await execAsync(
+    `osascript -e 'tell application "Finder" to empty trash'`,
+    { timeout: 60_000 }
+  )
+}
 
 export async function cleanCategories(
   categories: ScanResult[],
@@ -15,20 +27,26 @@ export async function cleanCategories(
     for (const p of category.paths) {
       onProgress({
         categoryId: category.id,
-        currentPath: p,
+        currentPath: p === TRASH_SENTINEL ? 'Emptying Trash via Finder...' : p,
         bytesFreed,
         totalBytes: category.totalBytes,
         done: false,
       })
 
       try {
-        const size = await getDirSize(p)
-        await safeDelete(p)
-        bytesFreed += size
+        if (p === TRASH_SENTINEL) {
+          // Use osascript — the only way to empty Trash without Full Disk Access
+          await emptyTrashViaOsascript()
+          bytesFreed += category.totalBytes
+        } else {
+          const size = await getDirSize(p)
+          await safeDelete(p)
+          bytesFreed += size
+        }
       } catch (err) {
         onProgress({
           categoryId: category.id,
-          currentPath: p,
+          currentPath: p === TRASH_SENTINEL ? 'Emptying Trash via Finder...' : p,
           bytesFreed,
           totalBytes: category.totalBytes,
           done: false,

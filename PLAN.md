@@ -1,8 +1,8 @@
-# mac-cleaner — Detailed Implementation Plan
+# dusty-os — Detailed Implementation Plan
 
 ## Overview
 
-`mac-cleaner` is a beautiful terminal UI (TUI) application for macOS that scans for safely removable files — similar to CleanMyMac — but runs entirely in the terminal via `npx mac-cleaner`. Built with TypeScript, React, and Ink (React renderer for CLIs).
+`dusty-os` is a beautiful terminal UI (TUI) application for macOS that scans for safely removable files — similar to CleanMyMac — but runs entirely in the terminal via `npx dusty-os`. Built with TypeScript, React, and Ink (React renderer for CLIs).
 
 ---
 

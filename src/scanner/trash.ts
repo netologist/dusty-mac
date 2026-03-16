@@ -1,48 +1,55 @@
-import path from 'node:path'
-import fs from 'node:fs/promises'
-import { HOME, getDirSize, pathExists } from '../cleaner/utils.js'
+import { exec } from 'node:child_process'
+import { promisify } from 'node:util'
 import type { ScanResult } from './types.js'
 
-export async function scan(): Promise<ScanResult> {
-  const paths: string[] = []
-  let totalBytes = 0
+const execAsync = promisify(exec)
 
-  // Main user trash
-  const mainTrash = path.join(HOME, '.Trash')
-  if (await pathExists(mainTrash)) {
-    const size = await getDirSize(mainTrash)
-    if (size > 0) {
-      paths.push(mainTrash)
-      totalBytes += size
-    }
-  }
+// Sentinel path — the cleaner checks for this and calls osascript instead of safeDelete
+export const TRASH_SENTINEL = '__macos_trash__'
 
-  // External volume trash bins
+async function getTrashInfo(): Promise<{ totalBytes: number; itemCount: number }> {
   try {
-    const volumes = await fs.readdir('/Volumes', { withFileTypes: true })
-    const uid = process.getuid ? process.getuid() : 0
-    for (const vol of volumes) {
-      if (!vol.isDirectory() && !vol.isSymbolicLink()) continue
-      const trashPath = path.join('/Volumes', vol.name, '.Trashes', String(uid))
-      if (await pathExists(trashPath)) {
-        const size = await getDirSize(trashPath)
-        if (size > 0) {
-          paths.push(trashPath)
-          totalBytes += size
-        }
-      }
-    }
+    // Get item count first — fast and reliable
+    const { stdout: countOut } = await execAsync(
+      `osascript -e 'tell application "Finder" to get count of items in trash'`,
+      { timeout: 10_000 }
+    )
+    const itemCount = parseInt(countOut.trim(), 10)
+    if (isNaN(itemCount) || itemCount === 0) return { totalBytes: 0, itemCount: 0 }
+
+    // Sum sizes item by item — "get size of trash" returns missing value on some systems
+    const { stdout: sizeOut } = await execAsync(
+      `osascript -e 'tell application "Finder"
+  set trashItems to items in trash
+  set totalSize to 0
+  repeat with i in trashItems
+    try
+      set totalSize to totalSize + (size of i)
+    end try
+  end repeat
+  return totalSize
+end tell'`,
+      { timeout: 30_000 }
+    )
+    const totalBytes = parseInt(sizeOut.trim(), 10)
+    return { totalBytes: isNaN(totalBytes) ? 0 : totalBytes, itemCount }
   } catch {
-    // skip
+    return { totalBytes: 0, itemCount: 0 }
   }
+}
+
+export async function scan(): Promise<ScanResult> {
+  const { totalBytes, itemCount } = await getTrashInfo()
 
   return {
     id: 'trash',
     label: 'Trash Bins',
-    description: 'Items in Trash (main + external volumes)',
+    description: itemCount > 0
+      ? `${itemCount} item${itemCount === 1 ? '' : 's'} in Trash — emptied via macOS Finder`
+      : 'Trash is empty',
     icon: '🗑',
     color: 'red',
-    paths,
+    paths: itemCount > 0 ? [TRASH_SENTINEL] : [],
     totalBytes,
     selected: true,
     status: 'done',

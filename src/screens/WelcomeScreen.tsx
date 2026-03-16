@@ -27,12 +27,12 @@ export function WelcomeScreen({ scanningIds, results, totalFound }: WelcomeScree
 
       {/* ASCII art logo */}
       <Box flexDirection="column" marginBottom={1}>
-        <Text color="cyan" bold>   _____  ___    ____  </Text>
-        <Text color="cyan" bold>  |     ||   \  |    | </Text>
-        <Text color="cyan">  | | | ||    \ |    | </Text>
-        <Text color="cyan">  | | | ||  |\ \|    | </Text>
-        <Text color="cyan">  |_____||__| \_____|</Text>
-        <Text color="cyan" dimColor>  mac-cleaner — Clean your Mac</Text>
+        <Text color="cyan" bold>   ____   _____  _   _   ___  </Text>
+        <Text color="cyan" bold>  |  _ \ |  ___|| \ | | / _ \ </Text>
+        <Text color="cyan">  | | | || |_   |  \| || | | |</Text>
+        <Text color="cyan">  | |_| ||  _|  |     || |_| |</Text>
+        <Text color="cyan">  |____/ |_|    |_|\_| \___/ </Text>
+        <Text color="cyan" dimColor>  dusty-os — Dust off your system</Text>
       </Box>
 
       <Box flexDirection="column" gap={0}>

@@ -1,9 +1,9 @@
-# mac-cleaner
+# dusty-os
 
 A beautiful, interactive TUI Mac cleaner — a free, open-source alternative to CleanMyMac, running entirely in your terminal.
 
 ```
-npx mac-cleaner
+npx dusty-os
 ```
 
 > macOS only. Requires Node.js 18+.
@@ -13,7 +13,7 @@ npx mac-cleaner
 ## Screenshot
 
 ```
-   mac-cleaner v1.0.0  —  Scanning your Mac...
+   dusty-os v1.0.0  —  Scanning your Mac...
   ──────────────────────────────────────────────────────────
 
   ✔   System Caches               3.9 GB
@@ -47,11 +47,11 @@ npx mac-cleaner
 
 ```bash
 # Run directly without installing
-npx mac-cleaner
+npx dusty-os
 
 # Or install globally
-npm install -g mac-cleaner
-mac-cleaner
+npm install -g dusty-os
+dusty-os
 ```
 
 ### Keyboard shortcuts
@@ -97,7 +97,7 @@ mac-cleaner
 
 ### Cleaning & Space Recovery
 
-| Feature | mac-cleaner | CleanMyMac |
+| Feature | dusty-os | CleanMyMac |
 |---------|:-----------:|:----------:|
 | System junk / caches | ✅ | ✅ |
 | Log files | ✅ | ✅ |
@@ -124,7 +124,7 @@ mac-cleaner
 
 ### Performance & System
 
-| Feature | mac-cleaner | CleanMyMac |
+| Feature | dusty-os | CleanMyMac |
 |---------|:-----------:|:----------:|
 | RAM optimizer (free memory) | ✅ | ✅ |
 | RAM before/after comparison | ✅ | ✅ |
@@ -139,7 +139,7 @@ mac-cleaner
 
 ### Apps & Software
 
-| Feature | mac-cleaner | CleanMyMac |
+| Feature | dusty-os | CleanMyMac |
 |---------|:-----------:|:----------:|
 | App uninstaller (removes leftovers) | 🟡 (detects leftovers, no GUI uninstall) | ✅ |
 | Software updater (brew / npm) | ✅ (informational) | ✅ (one-click update) |
@@ -152,7 +152,7 @@ mac-cleaner
 
 ### Security & Privacy
 
-| Feature | mac-cleaner | CleanMyMac |
+| Feature | dusty-os | CleanMyMac |
 |---------|:-----------:|:----------:|
 | Malware / adware scanner | ❌ | ✅ |
 | Ransomware protection | ❌ | ✅ |
@@ -163,7 +163,7 @@ mac-cleaner
 
 ### Interface & Experience
 
-| Feature | mac-cleaner | CleanMyMac |
+| Feature | dusty-os | CleanMyMac |
 |---------|:-----------:|:----------:|
 | Terminal / TUI interface | ✅ | ❌ |
 | GUI (native macOS app) | ❌ | ✅ |
@@ -185,7 +185,7 @@ mac-cleaner
 ```bash
 # Clone and install
 git clone <repo>
-cd mac-cleaner
+cd dusty-os
 npm install
 
 # Run in dev mode
