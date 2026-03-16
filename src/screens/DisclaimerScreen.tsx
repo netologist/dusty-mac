@@ -35,7 +35,7 @@ export function DisclaimerScreen({ onAccept, onDecline }: DisclaimerScreenProps)
       {/* Body */}
       <Box flexDirection="column" marginTop={1} paddingX={1}>
         <Text bold>
-          dusty-os permanently and irreversibly deletes files from your system.
+          dusty-mac permanently and irreversibly deletes files from your system.
         </Text>
 
         <Box marginTop={1} flexDirection="column">
@@ -49,7 +49,7 @@ export function DisclaimerScreen({ onAccept, onDecline }: DisclaimerScreenProps)
         </Box>
 
         <Box marginTop={1} flexDirection="column" paddingLeft={2}>
-          <Text>• The authors, contributors, and distributors of dusty-os accept</Text>
+          <Text>• The authors, contributors, and distributors of dusty-mac accept</Text>
           <Text>  NO liability whatsoever, to the fullest extent permitted by applicable law.</Text>
         </Box>
 

@@ -12,7 +12,7 @@ export function Header({ subtitle }: HeaderProps) {
     <Box flexDirection="column" marginBottom={1}>
       <Box>
         <Text bold color="cyan">
-          {' '}dusty-os{' '}
+          {' '}dusty-mac{' '}
         </Text>
         <Text dimColor>v{VERSION}</Text>
         {subtitle && (

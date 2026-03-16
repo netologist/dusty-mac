@@ -1,5 +1,5 @@
 {
-  "name": "dusty-os",
+  "name": "dusty-mac",
   "version": "1.0.0",
   "description": "Beautiful TUI app to clean junk from your Mac — like CleanMyMac in your terminal",
   "keywords": [
@@ -14,7 +14,7 @@
   "license": "MIT",
   "author": "",
   "bin": {
-    "dusty-os": "./dist/cli.js"
+    "dusty-mac": "./dist/cli.js"
   },
   "engines": {
     "node": ">=18"

@@ -32,7 +32,7 @@ export function WelcomeScreen({ scanningIds, results, totalFound }: WelcomeScree
         <Text color="cyan">  | | | || |_   |  \| || | | |</Text>
         <Text color="cyan">  | |_| ||  _|  |     || |_| |</Text>
         <Text color="cyan">  |____/ |_|    |_|\_| \___/ </Text>
-        <Text color="cyan" dimColor>  dusty-os — Dust off your system</Text>
+        <Text color="cyan" dimColor>  dusty-mac — Dust off your system</Text>
       </Box>
 
       <Box flexDirection="column" gap={0}>

@@ -1,9 +1,9 @@
-# dusty-os
+# dusty-mac
 
 A beautiful, interactive TUI Mac cleaner — a free, open-source alternative to CleanMyMac, running entirely in your terminal.
 
 ```
-npx dusty-os
+npx dusty-mac
 ```
 
 > macOS only. Requires Node.js 18+.
@@ -13,7 +13,7 @@ npx dusty-os
 ## Screenshot
 
 ```
-   dusty-os v1.0.0  —  Scanning your Mac...
+   dusty-mac v1.0.0  —  Scanning your Mac...
   ──────────────────────────────────────────────────────────
 
   ✔   System Caches               3.9 GB
@@ -47,11 +47,11 @@ npx dusty-os
 
 ```bash
 # Run directly without installing
-npx dusty-os
+npx dusty-mac
 
 # Or install globally
-npm install -g dusty-os
-dusty-os
+npm install -g dusty-mac
+dusty-mac
 ```
 
 ### Keyboard shortcuts
@@ -97,7 +97,7 @@ dusty-os
 
 ### Cleaning & Space Recovery
 
-| Feature | dusty-os | CleanMyMac |
+| Feature | dusty-mac | CleanMyMac |
 |---------|:-----------:|:----------:|
 | System junk / caches | ✅ | ✅ |
 | Log files | ✅ | ✅ |
@@ -124,7 +124,7 @@ dusty-os
 
 ### Performance & System
 
-| Feature | dusty-os | CleanMyMac |
+| Feature | dusty-mac | CleanMyMac |
 |---------|:-----------:|:----------:|
 | RAM optimizer (free memory) | ✅ | ✅ |
 | RAM before/after comparison | ✅ | ✅ |
@@ -139,7 +139,7 @@ dusty-os
 
 ### Apps & Software
 
-| Feature | dusty-os | CleanMyMac |
+| Feature | dusty-mac | CleanMyMac |
 |---------|:-----------:|:----------:|
 | App uninstaller (removes leftovers) | 🟡 (detects leftovers, no GUI uninstall) | ✅ |
 | Software updater (brew / npm) | ✅ (informational) | ✅ (one-click update) |
@@ -152,7 +152,7 @@ dusty-os
 
 ### Security & Privacy
 
-| Feature | dusty-os | CleanMyMac |
+| Feature | dusty-mac | CleanMyMac |
 |---------|:-----------:|:----------:|
 | Malware / adware scanner | ❌ | ✅ |
 | Ransomware protection | ❌ | ✅ |
@@ -163,7 +163,7 @@ dusty-os
 
 ### Interface & Experience
 
-| Feature | dusty-os | CleanMyMac |
+| Feature | dusty-mac | CleanMyMac |
 |---------|:-----------:|:----------:|
 | Terminal / TUI interface | ✅ | ❌ |
 | GUI (native macOS app) | ❌ | ✅ |
@@ -185,7 +185,7 @@ dusty-os
 ```bash
 # Clone and install
 git clone <repo>
-cd dusty-os
+cd dusty-mac
 npm install
 
 # Run in dev mode
